@@ -1,0 +1,447 @@
+/* Загальні стилі */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: #1e1e2f;
+  color: #e0e0ff;
+}
+
+/* Шапка з білим навбаром */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #2b2b40 0%, #1e1e2f 100%);
+  color: #e0e0ff;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  border-bottom: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+/* Ефект при скролі */
+header.scrolled {
+  padding: 10px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover {
+  transform: translateX(-5px);
+}
+
+header .logo img {
+  height: 45px;
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover img {
+  transform: scale(1.1);
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Навігація */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li a {
+  color: #e0e0ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ефект підкреслення при наведенні */
+header nav ul li a:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+header nav ul li a:hover {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+  transform: translateY(-2px);
+}
+
+header nav ul li a:hover:before {
+  width: 80%;
+}
+
+/* Активний пункт меню */
+header nav ul li a.active {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+header nav ul li a.active:before {
+  width: 80%;
+}
+
+/* Пошук */
+.search-container {
+  flex: 1;
+  max-width: 350px;
+  margin: 0 25px;
+  position: relative;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  font-size: 1rem;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Іконка пошуку */
+.search-container:before {
+  content: '🔍';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  z-index: 2;
+}
+
+/* Бургер-меню */
+.burger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #495057;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.burger:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  transform: scale(1.1);
+}
+
+/* Основний контент */
+main {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #333 0%, #667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Картки ігор */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-items: center;
+  align-items: start; /* Вирівнює всі картки по верхньому краю */
+}
+
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background: #2b2b40;
+  border: 1px solid #3a3a5a;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Займає всю доступну висоту */
+  width: 100%; /* Займає всю доступну ширину */
+}
+
+.card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.card:hover:before {
+  transform: scaleX(1);
+}
+
+.card-image {
+  width: 100%;
+  height: 300px; /* Фіксована висота для всіх зображень */
+  overflow: hidden;
+  border-bottom: 2px solid #8a2be2;
+  background: linear-gradient(135deg, #2c2c4a 0%, #1e1e2f 100%);
+  position: relative;
+  flex-shrink: 0; /* Забороняє стискання */
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Займає весь вільний простір */
+  justify-content: space-between; /* Рівномірно розподіляє контент */
+  gap: 12px; /* Рівномірний проміжок між елементами */
+}
+
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+  filter: brightness(1.15);
+}
+
+.card h2 {
+  margin: 16px 20px 8px 20px; /* Відступ зліва 20px */
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.3;
+  min-height: auto;
+  display: block; /* Зміна з flex на block */
+}
+
+.card p {
+  margin: 0 20px 20px 20px; /* Відступ зліва 20px */
+  color: #b0b0d0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: block; /* Зміна з flex на block */
+  flex-grow: 0;
+}
+
+/* Футер */
+footer {
+  background: linear-gradient(135deg, #141425 0%, #2b2b40 100%);
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+footer p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Адаптивність */
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+  }
+  
+  .card-image {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .card-image {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 15px;
+    gap: 15px;
+  }
+  
+  .search-container {
+    max-width: 100%;
+    margin: 10px 0;
+    order: 3;
+    width: 100%;
+  }
+  
+  header nav ul {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 0 0 0 12px;
+    border: 1px solid #e9ecef;
+  }
+  
+  header nav ul.active {
+    display: flex;
+    animation: slideDown 0.4s ease;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  header nav ul li {
+    margin: 8px 0;
+  }
+  
+  header nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 8px;
+  }
+  
+  .burger {
+    display: block;
+    margin-left: auto;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 20px 15px;
+  }
+  
+  .card-image {
+    height: 300px;
+  }
+
+  .card h2 {
+    min-height: auto;
+    font-size: 1.2rem;
+  }
+  
+  header {
+    padding: 10px 12px;
+  }
+  
+  .logo span {
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+}
